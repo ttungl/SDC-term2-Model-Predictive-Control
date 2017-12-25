@@ -44,7 +44,7 @@ This model is based on the kinetic model to simplify the situation. It doesn't i
 * Polynomial Fitting and MPC Preprocessing:
 	+ Transformating coordinates from global to local coordinates: This transforms coordinates from the map to the vehicle coordinates. (lines `105-110` in `main.cpp`) 
 	+ Finding the third degree order polynomial and fitting to the waypoints. Using third degree order polynomial is generalized for most road scenarios. (line `116` in `main.cpp`)
-	+ The outputs are fed to the `Solve()` method through a singular vector `state` to get the results, including `steering angle` and `throttle acceleration`. (line 133 in `main.cpp`)
+	+ The outputs are fed to the `Solve()` method through a singular vector `state` to get the results, including `steering angle` and `throttle acceleration`. (line `133` in `main.cpp`)
 
 * Latency: (for real-world scenarios) (lines `125-129` in `main.cpp`)
 	+ `latency_value` = `0.1`. This latency value is `100 ms`. (line 125)
