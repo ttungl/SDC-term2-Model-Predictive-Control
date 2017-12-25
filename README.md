@@ -21,12 +21,18 @@ This model is based on the kinetic model to simplify the situation. It doesn't i
 
 * Update State variables:
 
-	x[t+1] = (x[t] + v[t] * cos(psi[t]) * dt
-	y[t+1] = (y[t] + v[t] * sin(psi[t]) * dt
-	psi[t+1] = psi[t] - v[t] * delta[t] / Lf * dt
-	v[t+1] = v[t] + a[t] * dt;
-	cte[t+1] = (f[t] - y[t]) + v[t] * sin(epsi[t]) * dt;
-	epsi[t+1] = (psi[t] - psides[t]) - v0[t]* delta[t] / Lf * dt;
+		x[t+1] = (x[t] + v[t] * cos(psi[t]) * dt
+
+		y[t+1] = (y[t] + v[t] * sin(psi[t]) * dt
+		
+		psi[t+1] = psi[t] - v[t] * delta[t] / Lf * dt
+		
+		v[t+1] = v[t] + a[t] * dt;
+		
+		cte[t+1] = (f[t] - y[t]) + v[t] * sin(epsi[t]) * dt;
+		
+		epsi[t+1] = (psi[t] - psides[t]) - v0[t]* delta[t] / Lf * dt;
+
 
 * Timestep Length and Elapsed Duration (`N` & `dt`):
 	+ Time step `N=10` and duration `dt=0.15`s are the perfect parameters for my implementation. If `N` and `dt` are either the larger or smaller amount of these settings, the vehicle doesn't keep running on the track, and it could be ended up to the lake, hill, or being stuck in a curb. So, these above settings are perfected to my cases.
