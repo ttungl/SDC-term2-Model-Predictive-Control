@@ -22,30 +22,30 @@ This model is based on the kinetic model to simplify the situation. It doesn't i
 
 ##### **Update Equations**:
 
-	* State variables:
+* State variables:
 
 
 
-	* Inputs
+* Inputs
 
 
-	* Dynamics
+* Dynamics
 
 
 
 ##### **Constraints**:
 
-	* Time step and duration:
-		+ Time step `N=10` and duration `dt=0.15` are the perfect parameters for my implementation. 
-		+ 
+* Time step and duration:
+	+ Time step `N=10` and duration `dt=0.15` are the perfect parameters for my implementation. 
+	+ 
 
-	* Polyfit:
-
-
-	* Polyeval:
+* Polyfit:
 
 
-	* Latency:
+* Polyeval:
+
+
+* Latency:
 
 
 
