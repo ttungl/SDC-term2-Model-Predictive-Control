@@ -20,6 +20,7 @@
 This model is based on the kinetic model to simplify the situation. It doesn't include the forces of gravity effects, friction, or other external forces. 
 
 * Update State variables:
+
 	x[t+1] = (x[t] + v[t] * cos(psi[t]) * dt
 	y[t+1] = (y[t] + v[t] * sin(psi[t]) * dt
 	psi[t+1] = psi[t] - v[t] * delta[t] / Lf * dt
