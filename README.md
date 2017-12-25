@@ -5,7 +5,6 @@
     ttungl at gmail dot com
    
 **Model Predictive Control Project**
-in Self-Driving Car Engineer Nanodegree Program
 ---
 
 
