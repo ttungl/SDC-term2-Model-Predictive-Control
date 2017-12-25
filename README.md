@@ -13,7 +13,7 @@
 
 * The implementation has been followed to the [rubric](https://review.udacity.com/#!/rubrics/896/view). 
 
-* This is my result with [video demo](https://youtu.be/3PFlztq836s). I tested the model with velocity reference at 50 MPH and 70 MPH. The data output can be found at [here](https://github.com/ttungl/SDC-term2-Model-Predictive-Control/tree/master/datat_output).
+* This is my result with [video demo](https://youtu.be/3PFlztq836s). I tested the model with velocity reference at 50 MPH and 70 MPH as shown below. The data output can be found at [here](https://github.com/ttungl/SDC-term2-Model-Predictive-Control/tree/master/datat_output).
 
 <img src="https://github.com/ttungl/SDC-term2-Model-Predictive-Control/blob/master/gifs/gif_50.gif" height="149" width="270"> <img src="https://github.com/ttungl/SDC-term2-Model-Predictive-Control/blob/master/gifs/gif_70.gif" height="149" width="270"> 
 
