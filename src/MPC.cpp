@@ -31,9 +31,7 @@ const int a_start = delta_start + N - 1;
 //
 // This is the length from front to CoG that has a similar radius.
 // const double Lf = 2.67;
-double ref_v = 70.0; // 85.0
-
-
+double ref_v = 50.0; //70
 
 class FG_eval {
  public:
@@ -49,8 +47,8 @@ class FG_eval {
     // the Solver function below.
 
     // constants
-    const int cte_cst = 1000; // 1000
-    const int epsi_cst = 1000; // 1000
+    const int cte_cst = 1000; 
+    const int epsi_cst = 1000; 
     const int v_cst = 1;
     const int delta_cst_use = 2;
     const int a_cst_use = 2;
