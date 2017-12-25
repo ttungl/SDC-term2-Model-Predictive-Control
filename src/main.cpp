@@ -116,22 +116,27 @@ int main() {
           auto coeffs = polyfit(Ptsx, Ptsy, 3); 
 
           // cte and epsi
-          const double cte = polyeval(coeffs, 0);
-          const double epsi = -atan(coeffs(1));
+          const double cte0 = polyeval(coeffs, 0);
+          const double epsi0 = -atan(coeffs(1));
 
           double steer_value = j[1]["steering_angle"];
           double throttle_value = j[1]["throttle"];
 
-          const double latency_value = 0.1; // 0.1
+          const double latency_value = 0.1; // 100ms
           
           double x_delay = v * cos(psi) * latency_value;
-          double psi_delay = -v*steer_value / Lf * latency_value;
+          double psi_delay = -v * steer_value / Lf * latency_value;
           double v_delay = v + throttle_value * latency_value;
+        
+          // update cte and epsi
+          double cte = cte0 + v * sin(epsi0) * latency_value;
+          double epsi = epsi0 + v * steer_value * latency_value / Lf;
 
           Eigen::VectorXd state(6);
           state << x_delay, 0.0, psi_delay, v_delay, cte, epsi;
           auto res = mpc.Solve(state, coeffs);
 
+          
 
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
