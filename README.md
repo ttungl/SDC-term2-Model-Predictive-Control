@@ -9,21 +9,44 @@
 
 
 #### Project description: 
-* Choose the state, input(s), dynamics, constraints and implement Model Predictive Control algorithm. The outputs of the algorithm are the steering angle and throttle acceleration which are applied to control the vehicle. The vehicle is able to drive successfully around the track.
+* Choose the state, input(s), dynamics, constraints and implement Model Predictive Control. The outputs of the model are the steering angle and throttle acceleration which are applied to control the vehicle. So, the vehicle is able to drive successfully around the track.
 
 * The implementation has been followed to the [rubric](https://review.udacity.com/#!/rubrics/896/view). 
 
 ---
 
-#### Model Predictive Control Algorithm
-The algorithm includes the state, actuators and update equations, which are described as below.
+#### MPC Model
 
-##### The state:
-
+This model is based on the kinetic model to simplify the situation. It doesn't include the forces of gravity effects, friction, or other external forces. 
 
 
-##### The actuators:
+##### **Update Equations**:
+
+	* State variables:
 
 
 
-##### The update equations:
+	* Inputs
+
+
+	* Dynamics
+
+
+
+##### **Constraints**:
+
+	* Time step and duration:
+		+ Time step `N=10` and duration `dt=0.15` are the perfect parameters for my implementation. 
+		+ 
+
+	* Polyfit:
+
+
+	* Polyeval:
+
+
+	* Latency:
+
+
+
+---
