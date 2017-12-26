@@ -64,12 +64,8 @@
     
     + `v_delay = v + throttle_value * latency_value`.
 
-    + pred_cte = cte + v * sin(epsi) * latency_value;
+    + `pred_cte = cte + v * sin(epsi) * latency_value`.
     
-    + pred_epsi = epsi + v * delta * latency_value / Lf;
-
-
-
-
+    + `pred_epsi = epsi + v * delta * latency_value / Lf`.
 
 ---
