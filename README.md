@@ -24,12 +24,12 @@
 * The model includes several components:
 	
 	+ This model is based on the kinetic model with 6 coefficients in a singular vector. The update equations are from lines `79-84` in `MPC.cpp`.
-		* x: x-axis of the vehicle.
-		* y: y-axis of the vehicle.
-		* psi: the heading direction of the vehicle.
-		* v: vehicle's velocity.
-		* cte: cross track error.
-		* epsi: orientation error.
+		* `x`: x-axis of the vehicle.
+		* `y`: y-axis of the vehicle.
+		* `psi`: the heading direction of the vehicle.
+		* `v`: vehicle's velocity.
+		* `cte`: cross track error.
+		* `epsi`: orientation error.
 
 	+ Constraints: `n_constraints = 6 * N`, where N is the timestep length. Lower bound and upper bound for variables, steering angle, and throttle acceleration are set at [`-1.0e19`,`1.0e19`], [`-deg2rad(25)`, `deg2rad(25)`], and [`-1.0`, `1.0`], respectively. 
 
