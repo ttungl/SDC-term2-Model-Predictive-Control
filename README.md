@@ -9,7 +9,7 @@
 
 
 #### Project description: 
-* Choose the state, input(s), dynamics, constraints and implement Model Predictive Control. The outputs of the model are the steering angle and throttle acceleration which are applied to control the vehicle. So, the vehicle is able to drive successfully around the track.
+* Choose the state, input(s), dynamics, constraints and implement Model Predictive Control. The vehicle is able to drive successfully around the track.
 
 * The implementation has been followed to the [rubric](https://review.udacity.com/#!/rubrics/896/view). 
 
@@ -19,41 +19,49 @@
 
 ---
 
-#### MPC Model
+#### MPC Model implementation
 
-This model is based on the kinetic model to simplify the situation. It doesn't include the forces of gravity effects, friction, or other external forces. 
-
-* Update State variables:
-
-		x[t+1] = (x[t] + v[t] * cos(psi[t]) * dt
-
-		y[t+1] = (y[t] + v[t] * sin(psi[t]) * dt
-		
-		psi[t+1] = psi[t] - v[t] * delta[t] / Lf * dt
-		
-		v[t+1] = v[t] + a[t] * dt;
-		
-		cte[t+1] = (f[t] - y[t]) + v[t] * sin(epsi[t]) * dt;
-		
-		epsi[t+1] = (psi[t] - psides[t]) - v0[t]* delta[t] / Lf * dt;
-
-
-* Timestep Length and Elapsed Duration (`N` & `dt`):
-	+ Time step `N=10` and duration `dt=0.15`s are the perfect parameters for my implementation. If `N` and `dt` are either the larger or smaller amount of these settings, the vehicle doesn't keep running on the track, and it could be ended up to the lake, hill, or being stuck in a curb. So, these above settings are perfected to my cases.
-
-* Number of constraints:
-	+ I set `n_constraints = 6 * N`, where N is the timestep, and 6 element in a singular state vector.
-	+ Lower bound and upper bound for variables, steering angle, and throttle acceleration are set at [`-1.0E19`,`1.0E19`], [`-deg2rad(25)`, `deg2rad(25)`], and [`-1.0`, `1.0`], respectively. 
+* The model includes several components:
 	
-* Polynomial Fitting and MPC Preprocessing:
-	+ Transformating coordinates from global to local coordinates: This transforms coordinates from the map to the vehicle coordinates. (lines `105-110` in `main.cpp`) 
-	+ Finding the third degree order polynomial and fitting to the waypoints. Using third degree order polynomial is generalized for most road scenarios. (line `116` in `main.cpp`)
-	+ The outputs are fed to the `Solve()` method through a singular vector `state` to get the results, including `steering angle` and `throttle acceleration`. (line `133` in `main.cpp`)
+	+ This model is based on the kinetic model with 6 coefficients in a singular vector. The update equations are from lines `79-84` in `MPC.cpp`.
+		* x: x-axis of the vehicle.
+		* y: y-axis of the vehicle.
+		* psi: the heading direction of the vehicle.
+		* v: vehicle's velocity.
+		* cte: cross track error.
+		* epsi: orientation error.
 
-* Latency: (for real-world scenarios) (lines `125-129` in `main.cpp`)
+	+ Constraints: `n_constraints = 6 * N`, where N is the timestep length. Lower bound and upper bound for variables, steering angle, and throttle acceleration are set at [`-1.0e19`,`1.0e19`], [`-deg2rad(25)`, `deg2rad(25)`], and [`-1.0`, `1.0`], respectively. 
+
+	+ The optimization of the cost function is the sum of different terms, from lines `58-77` in `MPC.cpp`.
+		
+* Timestep Length and Elapsed Duration (`N` & `dt`):
+	
+	+ Timestep length `N` and elapsed duration `dt` are the parameters in the optimization section where the prediction horizon `T` = `N` x `dt`. 
+
+		* A large `dt` can cause a continuous reference trajectory (discretization error).
+	
+		* A large `T` can be good for controlling but if predicting too far in the future, it's impractical to the realistic scenarios.
+	
+		* A large `T` and a small `dt` can lead to the large `N`, resulting in the higher cost of computation.
+	
+	+ In this project, after trying several times (try-and-error method), I observed that timestep length `N=10` and elapsed duration `dt=0.15`s are final parameters. 
+
+
+* Polynomial Fitting and MPC Preprocessing:
+	+ Transformating coordinates from global to local coordinates: This transforms coordinates from the map to the vehicle coordinates (lines `110-115` in `main.cpp`).
+	
+	+ Finding the third degree order polynomial and fitting to the waypoints. Using third degree order polynomial is generalized for most road scenarios. (lines ``47-66` and call it at line `116` in `main.cpp`)
+	
+	+ The outputs are fed to the `Solve()` method through a singular vector `state` to get the results, including `steering angle` and `throttle acceleration`. (line `138` in `main.cpp`)
+
+* Latency: (for real-world scenarios) (lines `129-134` in `main.cpp`)
 	+ `latency_value` = `0.1`. This latency value is `100 ms`. (line 125)
+	
 	+ `x_delay = v * cos(psi) * latency_value`.
+    
     + `psi_delay = -v * steer_value / Lf * latency_value`.
+    
     + `v_delay = v + throttle_value * latency_value`.
 
 
