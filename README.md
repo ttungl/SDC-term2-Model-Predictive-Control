@@ -51,7 +51,7 @@
 * Polynomial Fitting and MPC Preprocessing:
 	+ Transformating coordinates from global to local coordinates: This transforms coordinates from the map to the vehicle coordinates (lines `110-115` in `main.cpp`).
 	
-	+ Finding the third degree order polynomial and fitting to the waypoints. Using third degree order polynomial is generalized for most road scenarios. (lines ``47-66` and call it at line `116` in `main.cpp`)
+	+ Finding the third degree order polynomial and fitting to the waypoints. Using third degree order polynomial is generalized for most road scenarios. (lines `47-66` and call it at line `116` in `main.cpp`)
 	
 	+ The outputs are fed to the `Solve()` method through a singular vector `state` to get the results, including `steering angle` and `throttle acceleration`. (line `138` in `main.cpp`)
 
