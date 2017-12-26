@@ -56,7 +56,7 @@
 	+ The outputs are fed to the `Solve()` method through a singular vector `state` to get the results, including `steering angle` and `throttle acceleration`. (line `138` in `main.cpp`)
 
 * Latency: (for real-world scenarios) (lines `129-134` in `main.cpp`)
-	+ `latency_value` = `0.1`. This latency value is `100 ms`. (line 125)
+	+ `latency_value` = `0.1`. This latency value is `100 ms`. (line 127)
 	
 	+ `x_delay = v * cos(psi) * latency_value`.
     
@@ -64,6 +64,9 @@
     
     + `v_delay = v + throttle_value * latency_value`.
 
+    + pred_cte = cte + v * sin(epsi) * latency_value;
+    
+    + pred_epsi = epsi + v * delta * latency_value / Lf;
 
 
 
