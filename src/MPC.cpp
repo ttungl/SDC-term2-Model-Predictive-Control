@@ -31,7 +31,7 @@ const int a_start = delta_start + N - 1;
 //
 // This is the length from front to CoG that has a similar radius.
 // const double Lf = 2.67;
-double ref_v = 80.0; 
+double ref_v = 50.0; 
 
 class FG_eval {
  public:
@@ -52,8 +52,8 @@ class FG_eval {
     const int v_cst = 1;
     const int delta_cst_use = 2;
     const int a_cst_use = 2;
-    const int delta_cst_gap = 100;
-    const int a_cst_gap = 10;
+    const int delta_cst_gap = 100; 
+    const int a_cst_gap = 10; //10
     
     fg[0] = 0; 
 
